@@ -1,6 +1,6 @@
 # ######################################################################################################################
 # * Root level [CMakeLists.txt] template
-# * It's not recommended to use CMake to install system-level package managment dependencies for portability reasons
+# * It's not recommended to use CMake to install system-level package management dependencies for portability reasons
 # * Assuming the package is structured as follows
 #[[
         project-name/
@@ -16,9 +16,9 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 # * When finding a package, CMake will either look for "package-name-config.cmake" or "PackageNameConfig.cmake", so when
-#   the ${PROJECT_NAME} is used to generate the pakcage config file:
+#   the ${PROJECT_NAME} is used to generate the package config file:
 # * If the project name is formatted as "project-name", then the config file should be "${PROJECT_NAME}-config.cmake"
-# * If the proejct name is formateed as "ProjectName", then the config file should be "${PROJECT_NAME}Config.cmake"
+# * If the project name is formatted as "ProjectName", then the config file should be "${PROJECT_NAME}Config.cmake"
 project(zj-cmake-template VERSION 0.0.1)
 
 # ######################################################################################################################
@@ -52,7 +52,7 @@ endif()
 # since the order matters
 set(zjLibsInOrder "hi-twice" "hello-once")
 
-# Root level variable to store all libray's relative include directories, so that they can be used to install package,
+# Root level variable to store all library's relative include directories, so that they can be used to install package,
 # since the generator expression requires relative paths
 set(zjPkgRelIncDirsSlash "")
 
