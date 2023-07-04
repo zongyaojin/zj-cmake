@@ -1,7 +1,7 @@
 # ######################################################################################################################
 # * Root level [CMakeLists.txt] template
 # * It's not recommended to use CMake to install system-level package management dependencies for portability reasons
-# * See https://github.com/zongyaojin/zj-cmake-template, for an example use of this template
+# * See https://github.com/zongyaojin/zj-cmake-template, for an example usage of this template
 # ######################################################################################################################
 
 cmake_minimum_required(VERSION 3.22.1)
@@ -17,7 +17,7 @@ project(zj-cmake-template VERSION 0.0.1)
 
 include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-colors.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-compiler-settings.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-cpp-definitions.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-compile-definitions.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-find-settings.cmake)
 
 include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_file_helpers.cmake)

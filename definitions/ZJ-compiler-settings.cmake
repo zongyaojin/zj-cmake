@@ -23,7 +23,3 @@ set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
-
-# ######################################################################################################################
-
-add_compile_definitions(__ZJ_PKG_ROOT_DIR__="${CMAKE_SOURCE_DIR}/")
