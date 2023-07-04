@@ -21,10 +21,6 @@ cmake_minimum_required(VERSION 3.22.1)
 # * If the proejct name is formateed as "ProjectName", then the config file should be "${PROJECT_NAME}Config.cmake"
 project(zj-cmake-template VERSION 0.0.1)
 
-# * These variables are defined here for convenience, in real projects, they sould be passed in as input arguments
-set(CMAKE_INSTALL_PREFIX /home/zjin/zj-portal/test-install-dir)
-set(CMAKE_BUILD_TYPE Release)
-
 # ######################################################################################################################
 # Scripts
 
