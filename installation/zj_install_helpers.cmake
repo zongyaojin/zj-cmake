@@ -18,6 +18,9 @@ function(
 
     # ##################################################################################################################
 
+    # Variables CMAKE_INSTALL_BINDIR, CMAKE_INSTALL_LIBDIR, CMAKE_INSTALL_INCLUDEDIR are not built-in variables in
+    # CMake; they are defined in the GNUInstallDirs module, which provides many variables to reference common
+    # destination directories in a platform-independent way
     include(GNUInstallDirs)
     install(
         TARGETS ${PROJECT_NAME} ${libTargets} ${exampleExecutables}
