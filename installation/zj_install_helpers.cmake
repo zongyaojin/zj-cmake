@@ -2,19 +2,12 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
-function(
-    zj_combine_install_library
-    pkgNamespace
-    libTargets
-    relIncDirsSlash
-    headerPatterns
-    exampleExecutables
-    dataFolders)
+function(zj_combine_install_library libTargets relIncDirsSlash headerPatterns exampleExecutables dataFolders)
 
     add_library(${PROJECT_NAME} INTERFACE)
     target_link_libraries(${PROJECT_NAME} INTERFACE ${libTargets})
 
-    add_library(${pkgNamespace}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+    add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
     # ##################################################################################################################
 
@@ -49,7 +42,7 @@ function(
     install(
         EXPORT "${PROJECT_NAME}-targets"
         FILE "${PROJECT_NAME}-targets.cmake"
-        NAMESPACE "${pkgNamespace}::"
+        NAMESPACE "${PROJECT_NAME}::"
         DESTINATION "lib/cmake/${PROJECT_NAME}")
 
     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/installation/${PROJECT_NAME}-config.cmake.in"
@@ -67,7 +60,7 @@ function(
 
     # ##################################################################################################################
 
-    message(DEBUG "[zj_combine_install_library | pkg namespace: ${pkgNamespace}]")
+    message(DEBUG "[zj_combine_install_library | pkg namespace: ${PROJECT_NAME}]")
 
     message(DEBUG "---- [libTargets]")
     foreach(item IN LISTS libTargets)
