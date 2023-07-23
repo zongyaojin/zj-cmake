@@ -11,17 +11,19 @@
 # Use the folder name as the lib name
 get_filename_component(libName ${CMAKE_CURRENT_LIST_DIR} NAME)
 
-# Get this lib's absolute dirs without trailing slash; inc, src, and more if they exist
-list(APPEND libAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR})
+# * Get this lib's modules' absolute dirs without trailing slash
+# * A lib could have one or many modules (no or many subdirectories, respectively) each with a set of inc, src, and
+#   other folers
+list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR})
 
 # * Get absolute inc dirs without trailing slash, then the relative ones
 # * Inc dirs are needed for install, which has to use generator expressions for portability, so they have to be relative
-zj_paths_get_inc_no_slash("${libAbsDirsNoSlash}" libAbsIncDirs)
+zj_paths_get_inc_no_slash("${modulesAbsDirsNoSlash}" libAbsIncDirs)
 zj_paths_get_relative("${libAbsIncDirs}" libRelIncDirs)
 
 # * Get absolute src dirs without trailing slash, then the cpp fils with absolute paths
 # * Cpp files are only needed for building, not install, so absolute dirs are fine
-zj_paths_get_src_no_slash("${libAbsDirsNoSlash}" libAbsSrcDirs)
+zj_paths_get_src_no_slash("${modulesAbsDirsNoSlash}" libAbsSrcDirs)
 zj_files_get_cpp("${libAbsSrcDirs}" libAbsCpps)
 
 # ######################################################################################################################
