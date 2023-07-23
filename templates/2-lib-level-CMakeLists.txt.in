@@ -4,7 +4,7 @@
     [this-library]
         |-- [inc]
         |-- [src]
-        |-- CMakteLists.txt
+        |-- CMakeLists.txt
 ]]
 # ######################################################################################################################
 
@@ -13,7 +13,7 @@ get_filename_component(libName ${CMAKE_CURRENT_LIST_DIR} NAME)
 
 # * Get this lib's modules' absolute dirs without trailing slash
 # * A lib could have one or many modules (no or many subdirectories, respectively) each with a set of inc, src, and
-#   other folers
+#   other folders
 list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR})
 
 # * Get absolute inc dirs without trailing slash, then the relative ones
