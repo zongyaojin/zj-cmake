@@ -1,5 +1,7 @@
 include_guard(GLOBAL)
 
+include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-colors.cmake)
+
 # ######################################################################################################################
 
 # Pack find package hints into a single variable
