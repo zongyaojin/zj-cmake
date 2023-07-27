@@ -1,9 +1,21 @@
 # ######################################################################################################################
-# Assuming this library is structured as follows, no sub-modules, directly contains [inc] and [src]:
+# Case-1: assuming a library is structured as follows, no sub-modules, directly contains [inc] and [src]:
 #[[
-    [this-library]
+    [Case-1-library]
         |-- [inc]
         |-- [src]
+        |-- CMakeLists.txt
+]]
+# ######################################################################################################################
+# Case-2: assuming a library is structured as follows, two sub-modules, each with an [inc] and a [src]:
+#[[
+    [Case-2-library]
+        |-- [hi]
+              |-- [inc]
+              |-- [src]
+        |-- [hi2]
+              |-- [inc]
+              |-- [src]
         |-- CMakeLists.txt
 ]]
 # ######################################################################################################################
@@ -11,10 +23,12 @@
 # Use the folder name as the lib name
 get_filename_component(libName ${CMAKE_CURRENT_LIST_DIR} NAME)
 
-# * Get this lib's modules' absolute dirs without trailing slash
-# * A lib could have one or many modules (no or many subdirectories, respectively) each with a set of inc, src, and
-#   other folders
+# * Get this lib's modules' absolute dirs without trailing slash; a lib could have one or many modules (no or many
+#   subdirectories, respectively) each with a set of inc, src, and other folders
+# * [Case-1] where the lib has only one module, and its inc/ and src/ are directly in the lib's root
 list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR})
+# * [Case-2] where the lib has more than one modules, each with a subdirectory with an inc/ and a src/
+list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR}/hi ${CMAKE_CURRENT_LIST_DIR}/hi2)
 
 # * Get absolute inc dirs without trailing slash, then the relative ones
 # * Inc dirs are needed for install, which has to use generator expressions for portability, so they have to be relative
@@ -36,11 +50,12 @@ add_library(${libName} ${libAbsCpps})
 zj_target_include_directories_genex(${libName} "${libRelIncDirs}")
 
 # [Lib-specific] Link to internal libs, if any, that this lib depends on
-target_link_libraries(${libName} hi-twice)
+target_link_libraries(${libName} zjFooLib zjBarLib)
 
 # [Lib-specific] Find and link external libs, if any, that this lib depends on, and link them to the target
+find_package(Eigen3 REQUIRED)
 find_package(spdlog REQUIRED)
-target_link_libraries(${libName} spdlog::spdlog)
+target_link_libraries(${libName} Eigen3::Eigen spdlog::spdlog)
 
 # ######################################################################################################################
 
