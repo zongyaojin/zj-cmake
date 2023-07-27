@@ -8,6 +8,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_git_helpers.cmake)
 # unnecessary), one can use: `target_compile_definitions(myLibrary PUBLIC __MY_VAR__)`
 # ######################################################################################################################
 
+add_compile_definitions(__ZJ_PKG_NAME__="${PROJECT_NAME}")
 add_compile_definitions(__ZJ_PKG_SOURCE_PATH__="${CMAKE_SOURCE_DIR}/")
 add_compile_definitions(__ZJ_PKG_BUILD_PATH__="${CMAKE_BINARY_DIR}/")
 
