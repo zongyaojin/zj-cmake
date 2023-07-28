@@ -8,13 +8,15 @@ function(zj_test_setup filesAndFolders)
 
     include(CTest)
     find_package(GTest REQUIRED)
-    
+
     zj_variable_prune(filesAndFolders)
     foreach(zjTest IN LISTS zjAllTests)
         set(testFile ${CMAKE_SOURCE_DIR}/tests/${zjTest}.cpp)
         set(testFolder ${CMAKE_SOURCE_DIR}/tests/${zjTest})
 
         if(EXISTS ${testFile})
+            # These single file tests cannot link to library other than the package and GTest; otherwise, put the test
+            # in a folder and use a CMakeLists.txt file there to add custom options
             add_executable(${zjTest} ${testFile})
 
             # Since the combined library is created by the install function, it can be used to link all libraries
