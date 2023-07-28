@@ -12,6 +12,7 @@ function(zj_test_setup testFilesAndFoldersRelative)
     zj_variable_prune(testFilesAndFoldersRelative)
     foreach(zjTest IN LISTS testFilesAndFoldersRelative)
 
+        # Get the full path for the file or directory
         set(testCaseFullPath ${CMAKE_SOURCE_DIR}/tests/${zjTest})
 
         if(EXISTS ${testCaseFullPath} AND NOT IS_DIRECTORY ${testCaseFullPath})
@@ -26,9 +27,11 @@ function(zj_test_setup testFilesAndFoldersRelative)
             # Specify the command to execute for running the test
             add_test(NAME ${zjTest} COMMAND ${CMAKE_BINARY_DIR}/tests/${zjTest})
         elseif(IS_DIRECTORY ${testCaseFullPath})
+            # If it's a folder, add it as a subfolder so the custom CMake file configures the test
             add_subdirectory(${testCaseFullPath})
         else()
-            message(FATAL_ERROR "Test case input is neither a directory or a file")
+            # Otherwisre, report fatal error
+            message(FATAL_ERROR "Test case input is neither a directory nor a file")
         endif()
 
     endforeach()
