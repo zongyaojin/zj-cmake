@@ -14,4 +14,5 @@ sudo apt install -y build-essential pkg-config git wget autoconf libtool shfmt
 sudo apt install -y cmake
 
 # Install python dependencies
+pip install --upgrade pip setuptools
 pip install --user cmakelang

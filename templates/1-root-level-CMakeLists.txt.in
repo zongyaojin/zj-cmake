@@ -59,8 +59,13 @@ endforeach()
 # Use the function to combine all targets as one interface target and install the combined target
 set(zjHeaderPatterns "*.hpp" "*.h")
 set(zjDataFolders "specs")
-zj_combine_install_library("${zjLibsInOrder}" "${zjPkgRelIncDirsSlash}" "${zjHeaderPatterns}" "${zjExamples}"
-                           "${zjDataFolders}")
+zj_combine_install_library(
+    "${zjLibsInOrder}"
+    "${zjPkgRelIncDirsSlash}"
+    "${zjHeaderPatterns}"
+    "${zjExamples}"
+    "${zjDataFolders}"
+)
 
 # ######################################################################################################################
 # Tests
@@ -71,4 +76,3 @@ if(BUILD_TESTING)
     file(GLOB zjAllTests RELATIVE "${CMAKE_SOURCE_DIR}/tests" "${CMAKE_SOURCE_DIR}/tests/*")
     zj_test_setup("${zjAllTests}")
 endif()
-

@@ -28,7 +28,12 @@ get_filename_component(libName ${CMAKE_CURRENT_LIST_DIR} NAME)
 # * [Case-1] where the lib has only one module, and its inc/ and src/ are directly in the lib's root
 list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR})
 # * [Case-2] where the lib has more than one modules, each with a subdirectory with an inc/ and a src/
-list(APPEND modulesAbsDirsNoSlash ${CMAKE_CURRENT_LIST_DIR}/hi ${CMAKE_CURRENT_LIST_DIR}/hi2)
+list(
+    APPEND
+    modulesAbsDirsNoSlash
+    ${CMAKE_CURRENT_LIST_DIR}/hi
+    ${CMAKE_CURRENT_LIST_DIR}/hi2
+)
 
 # * Get absolute inc dirs without trailing slash, then the relative ones
 # * Inc dirs are needed for install, which has to use generator expressions for portability, so they have to be relative
