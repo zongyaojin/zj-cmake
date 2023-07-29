@@ -13,8 +13,10 @@ function(zj_target_include_directories_genex targetName relativeIncludeDirectori
     # * You cannot first pack all generator expressions to a list, then apply it as a single variable, since unwrapping
     #   will make them absolute paths again, and will not be able to use for installation
     foreach(relIncDir IN LISTS relativeIncludeDirectories)
-        target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/${relIncDir}>
-                                                     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+        target_include_directories(
+            ${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/${relIncDir}>
+                              $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        )
     endforeach()
 
 endfunction()

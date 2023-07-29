@@ -2,7 +2,14 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
-function(zj_combine_install_library libTargets relIncDirsSlash headerPatterns exampleExecutables dataFolders)
+function(
+    zj_combine_install_library
+    libTargets
+    relIncDirsSlash
+    headerPatterns
+    exampleExecutables
+    dataFolders
+)
 
     add_library(${PROJECT_NAME} INTERFACE)
     target_link_libraries(${PROJECT_NAME} INTERFACE ${libTargets})
@@ -22,7 +29,8 @@ function(zj_combine_install_library libTargets relIncDirsSlash headerPatterns ex
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         INCLUDES
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
 
     # Adding slash after the directory will create a flat installation: https://stackoverflow.com/a/23766303
     foreach(relDirWithSlash IN LISTS relIncDirsSlash)
@@ -31,26 +39,32 @@ function(zj_combine_install_library libTargets relIncDirsSlash headerPatterns ex
                 DIRECTORY ${relDirWithSlash}
                 DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
                 FILES_MATCHING
-                PATTERN ${hp})
+                PATTERN ${hp}
+            )
         endforeach()
     endforeach()
 
     include(CMakePackageConfigHelpers)
-    write_basic_package_version_file("${PROJECT_NAME}-config-version.cmake" VERSION ${PACKAGE_VERSION}
-                                     COMPATIBILITY AnyNewerVersion)
+    write_basic_package_version_file(
+        "${PROJECT_NAME}-config-version.cmake" VERSION ${PACKAGE_VERSION} COMPATIBILITY AnyNewerVersion
+    )
 
     install(
         EXPORT "${PROJECT_NAME}-targets"
         FILE "${PROJECT_NAME}-targets.cmake"
         NAMESPACE "${PROJECT_NAME}::"
-        DESTINATION "lib/cmake/${PROJECT_NAME}")
+        DESTINATION "lib/cmake/${PROJECT_NAME}"
+    )
 
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/installation/${PROJECT_NAME}-config.cmake.in"
-                   "${PROJECT_NAME}-config.cmake" @ONLY)
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/installation/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
+        @ONLY
+    )
 
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
                   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
-            DESTINATION "lib/cmake/${PROJECT_NAME}")
+            DESTINATION "lib/cmake/${PROJECT_NAME}"
+    )
 
     # For other folders, copy and install them to build and install directories
     foreach(folder IN LISTS dataFolders)

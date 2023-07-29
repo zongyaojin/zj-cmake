@@ -4,7 +4,12 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_variable_helpers.cmake)
 
 # ######################################################################################################################
 
-function(zj_files_get_by_pattern sourceDirectoriesNoSlash pattern sourceFiles)
+function(
+    zj_files_get_by_pattern
+    sourceDirectoriesNoSlash
+    pattern
+    sourceFiles
+)
 
     foreach(srcDirNoSlash IN LISTS sourceDirectoriesNoSlash)
         file(GLOB srcDirCppFiles ${srcDirNoSlash}/${pattern})

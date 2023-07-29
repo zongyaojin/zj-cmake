@@ -7,7 +7,12 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_variable_helpers.cmake)
 function(zj_paths_get_relative absoluteDirectories relativeDirectories)
 
     foreach(absDir IN LISTS absoluteDirectories)
-        file(RELATIVE_PATH relDir ${CMAKE_SOURCE_DIR} ${absDir})
+        file(
+            RELATIVE_PATH
+            relDir
+            ${CMAKE_SOURCE_DIR}
+            ${absDir}
+        )
         list(APPEND relativeDirs ${relDir})
     endforeach()
 
@@ -26,7 +31,12 @@ endfunction()
 
 # ######################################################################################################################
 
-function(zj_paths_get_by_name_no_slash rootDirectories extensionDirectories totalDirectories)
+function(
+    zj_paths_get_by_name_no_slash
+    rootDirectories
+    extensionDirectories
+    totalDirectories
+)
 
     foreach(rootDir IN LISTS rootDirectories)
         list(APPEND totalDirs ${rootDir}/${extensionDirectories})

@@ -29,7 +29,8 @@ if(CCACHE_PROGRAM)
         "fi\n"
         "\n"
         "export CCACHE_CPP2=true\n"
-        "exec \"${C_LAUNCHER}\" \"${CMAKE_C_COMPILER}\" \"$@\"\n")
+        "exec \"${C_LAUNCHER}\" \"${CMAKE_C_COMPILER}\" \"$@\"\n"
+    )
 
     # Cpp support
     file(
@@ -44,7 +45,8 @@ if(CCACHE_PROGRAM)
         "fi\n"
         "\n"
         "export CCACHE_CPP2=true\n"
-        "exec \"${CXX_LAUNCHER}\" \"${CMAKE_CXX_COMPILER}\" \"$@\"\n")
+        "exec \"${CXX_LAUNCHER}\" \"${CMAKE_CXX_COMPILER}\" \"$@\"\n"
+    )
 
     # Cuda support, added in CMake 3.10
     file(
@@ -59,11 +61,14 @@ if(CCACHE_PROGRAM)
         "fi\n"
         "\n"
         "export CCACHE_CPP2=true\n"
-        "exec \"${CUDA_LAUNCHER}\" \"${CMAKE_CUDA_COMPILER}\" \"$@\"\n")
+        "exec \"${CUDA_LAUNCHER}\" \"${CMAKE_CUDA_COMPILER}\" \"$@\"\n"
+    )
 
     # Apply chmod to make them executables
-    execute_process(COMMAND chmod a+rx "${CMAKE_BINARY_DIR}/launch-c" "${CMAKE_BINARY_DIR}/launch-cxx"
-                            "${CMAKE_BINARY_DIR}/launch-cuda")
+    execute_process(
+        COMMAND chmod a+rx "${CMAKE_BINARY_DIR}/launch-c" "${CMAKE_BINARY_DIR}/launch-cxx"
+                "${CMAKE_BINARY_DIR}/launch-cuda"
+    )
 
     if(CMAKE_GENERATOR STREQUAL "Xcode")
         # Set Xcode attributes to route compilation and linking through our scripts

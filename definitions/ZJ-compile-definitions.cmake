@@ -18,7 +18,13 @@ include(GNUInstallDirs)
 add_compile_definitions(__ZJ_PKG_INSTALL_BIN_PATH__="${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}/")
 
 # Git and build info
-zj_git_get_info(zjGitBranch zjGitCommitHash zjGitCommitTime zjGitTag zjCmakeCacheTime)
+zj_git_get_info(
+    zjGitBranch
+    zjGitCommitHash
+    zjGitCommitTime
+    zjGitTag
+    zjCmakeCacheTime
+)
 
 # Add definitions
 add_compile_definitions(__ZJ_PKG_GIT_BRANCH__="${zjGitBranch}")

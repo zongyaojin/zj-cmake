@@ -14,7 +14,13 @@ function(zj_variable_prune inOutVariable)
     # remove duplicates
     list(REMOVE_DUPLICATES var)
     # remove empty entires, by only including strings with one or more characters
-    list(FILTER var INCLUDE REGEX ".+")
+    list(
+        FILTER
+        var
+        INCLUDE
+        REGEX
+        ".+"
+    )
 
     # update the variable
     set(${inOutVariable} ${var} PARENT_SCOPE)

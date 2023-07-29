@@ -2,7 +2,14 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
-function(zj_git_get_info branch commitHash commitTime tag cmakeCacheTime)
+function(
+    zj_git_get_info
+    branch
+    commitHash
+    commitTime
+    tag
+    cmakeCacheTime
+)
 
     if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.git")
         return()
@@ -15,21 +22,24 @@ function(zj_git_get_info branch commitHash commitTime tag cmakeCacheTime)
         COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         OUTPUT_VARIABLE zjGitBranch
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
 
     # Retrieve the commit hash
     execute_process(
         COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         OUTPUT_VARIABLE zjGitCommitHash
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
 
     # Retrieve the commit time
     execute_process(
         COMMAND ${GIT_EXECUTABLE} log -1 --format=%cd --date=iso
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         OUTPUT_VARIABLE zjGitCommitTime
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
 
     # * Retrieve the commit message
     # * --always: show uniquely abbreviated commit object as fallback
@@ -38,7 +48,8 @@ function(zj_git_get_info branch commitHash commitTime tag cmakeCacheTime)
         COMMAND ${GIT_EXECUTABLE} describe --tags --always
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         OUTPUT_VARIABLE zjGitTag
-        OUTPUT_STRIP_TRAILING_WHITESPACE)
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
 
     # Retrieve the CMake cache creation time
     string(TIMESTAMP zjCMakeCacheCreationTime)
