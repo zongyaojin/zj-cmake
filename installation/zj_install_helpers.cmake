@@ -57,7 +57,7 @@ function(
     )
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/installation/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
+        "${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
         @ONLY
     )
 
