@@ -1,5 +1,7 @@
 # zj-cmake
 
+[![GitHub license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/zongyaojin/zj-cmake/blob/main/LICENSE)
+
 ---
 
 Refer to:
