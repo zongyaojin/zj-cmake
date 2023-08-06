@@ -9,8 +9,8 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_git_helpers.cmake)
 # ######################################################################################################################
 
 add_compile_definitions(__ZJ_PKG_NAME__="${PROJECT_NAME}")
-add_compile_definitions(__ZJ_PKG_SOURCE_PATH__="${CMAKE_SOURCE_DIR}/")
-add_compile_definitions(__ZJ_PKG_BUILD_PATH__="${CMAKE_BINARY_DIR}/")
+add_compile_definitions(__ZJ_PKG_SOURCE_PATH_NO_SLASH__="${CMAKE_SOURCE_DIR}")
+add_compile_definitions(__ZJ_PKG_BUILD_PATH_NO_SLASH__="${CMAKE_BINARY_DIR}")
 
 # Variable CMAKE_INSTALL_BINDIR is not a built-in variable in CMake, but it is defined in the GNUInstallDirs module,
 # which provides many variables you can use to reference common destination directories in a platform-independent way.
