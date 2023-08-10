@@ -1,21 +1,15 @@
-# zj-cmake
+# ZJ CMake Tools
 
 [![GitHub license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/zongyaojin/zj-cmake/blob/main/LICENSE)
 
----
+This package provides some basic CMake tools for building and installing modularized C++ projects.
 
-Refer to:
+- The **root level** `CMakeLists.txt` file template can be found in [templates/rool-level-CMakeLists.txt](./templates/root-level-CMakeLists.txt.in)
+- A **library level** `CMakeLists.txt` template can be found in [templates/lib-level-CMakeLists.txt](./templates/lib-level-CMakeLists.txt.in)
+- The **install component** `xxx-config.cmake.in` template can be found in [templates/project-name-config.cmake/in](./templates/project-name-config.cmake.in)
+  - in `cmake/installation/zj_install_helpers.cmake`, the install function will look for client package's `cmake.in` file at `${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in`
+  - this way, client project doesn't have to put anything into this package's direcoty
 
-- [templates/1-rool-level-CMakeLists.txt](./templates/1-root-level-CMakeLists.txt.in) for the *root-level* `CMakeLists.txt` file
-- [templates/2-lib-level-CMakeLists.txt](./templates/2-lib-level-CMakeLists.txt.in) for a *library-level* `CMakeLists.txt` file
-- [templates/project-name-config.cmake/in](./templates/project-name-config.cmake.in) for the *install-needed* `xxx-config.cmake.in` file
-  - zj-cmake ignores `installation/*.cmake.in`, so it doesn't store the `cmake.in` file for client packages;
-  - in `cmake/installation/zj_install_helpers.cmake`, it looks for client package's `cmake.in` file at:
-    - `${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in`
-    - client package should put their `cmake.in`` file there so zj-cmake can use it to install
+See also:
 
----
-
-Refer to:
-
-- [zj-cmake-template](https://github.com/zongyaojin/zj-cmake-template) for the usage of this package in a minimal Cpp/CMake project
+- [ZJ Basic Cpp Tools](https://github.com/zongyaojin/zj-base) as an example for how to setup a modularized C++ project with this package.
