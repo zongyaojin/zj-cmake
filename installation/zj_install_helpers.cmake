@@ -2,6 +2,9 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
+# * zj_combine_install_library : Combine all targets into one library and install it
+
+# * \arg:sourceDirectoriesNoSlash
 function(
     zj_combine_install_library
     libTargets
@@ -57,8 +60,7 @@ function(
     )
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
-        @ONLY
+        "${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake" @ONLY
     )
 
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"

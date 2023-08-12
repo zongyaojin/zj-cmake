@@ -37,6 +37,7 @@ repos:
         exclude: .pre-commit-config.yaml|README.md
 
   # https://cmake-format.readthedocs.io/en/latest/
+  # https://cmake-format.readthedocs.io/en/latest/lint-example.html
   - repo: https://github.com/cheshirekow/cmake-format-precommit
     rev: v0.6.13
     hooks:

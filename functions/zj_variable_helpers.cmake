@@ -1,6 +1,10 @@
 include_guard(GLOBAL)
 
-# No need to wrap the input variable name by "${theInputVariableName}", see below <variable indirection>
+# * zj_variable_prune: Remove empty and duplicate entries from a list of variables
+#
+# * \arg[in, out] inOutVariable | A list of variables to be cleaned, the input variable will be updated in place
+#
+# * \note No need to wrap the input variable name by "${theInputVariableName}", see below <variable indirection>
 function(zj_variable_prune inOutVariable)
 
     # * The ${${inOutVariable}} syntax is known as <variable indirection>: https://stackoverflow.com/a/32631237

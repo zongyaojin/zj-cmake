@@ -4,6 +4,10 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_variable_helpers.cmake)
 
 # ######################################################################################################################
 
+# * zj_paths_get_relative: Get from absolute directires their directories relativet to the package
+#
+# * \arg[in] absoluteDirectories | Absolute directories
+# * \arg[out] relativeDirectories | Directories relative to the package
 function(zj_paths_get_relative absoluteDirectories relativeDirectories)
 
     foreach(absDir IN LISTS absoluteDirectories)
@@ -31,23 +35,28 @@ endfunction()
 
 # ######################################################################################################################
 
+# * zj_paths_get_by_name_no_slash: Get paths by concatenating a list of root directories with a extension directory
+#
+# * \arg[in] rootDirectories | Root directories
+# * \arg[in] extensionDirectory | Extension directory
+# * \arg[out] concatenatedDirectories | Concatenated directories
 function(
     zj_paths_get_by_name_no_slash
     rootDirectories
-    extensionDirectories
-    totalDirectories
+    extensionDirectory
+    concatenatedDirectories
 )
 
     foreach(rootDir IN LISTS rootDirectories)
-        list(APPEND totalDirs ${rootDir}/${extensionDirectories})
+        list(APPEND totalDirs ${rootDir}/${extensionDirectory})
     endforeach()
 
     zj_variable_prune(totalDirs)
-    set(${totalDirectories} ${totalDirs} PARENT_SCOPE)
+    set(${concatenatedDirectories} ${totalDirs} PARENT_SCOPE)
 
     # ##################################################################################################################
 
-    message(DEBUG "[zj_paths_get_by_name_no_slash | ${extensionDirectories}]")
+    message(DEBUG "[zj_paths_get_by_name_no_slash | ${extensionDirectory}]")
     foreach(item IN LISTS totalDirs)
         message(DEBUG "---- ${item}")
     endforeach()
@@ -57,6 +66,10 @@ endfunction()
 
 # ######################################################################################################################
 
+# * zj_paths_get_inc_no_slash: Get paths by concatenating a list of root directories with `inc`
+#
+# * \arg[in] rootDirectories | Root directories
+# * \arg[out] incDirecotires | Concatenated directories
 function(zj_paths_get_inc_no_slash rootDirectories incDirecotires)
 
     zj_paths_get_by_name_no_slash("${rootDirectories}" "inc" output)
@@ -66,15 +79,10 @@ endfunction()
 
 # ######################################################################################################################
 
-function(zj_paths_get_inc_slash rootDirectories incDirecotires)
-
-    zj_paths_get_by_name_no_slash("${rootDirectories}" "inc/" output)
-    set(${incDirecotires} ${output} PARENT_SCOPE)
-
-endfunction()
-
-# ######################################################################################################################
-
+# * zj_paths_get_src_no_slash: Get paths by concatenating a list of root directories with `src`
+#
+# * \arg[in] rootDirectories | Root directories
+# * \arg[out] srcDirecotires | Concatenated directories
 function(zj_paths_get_src_no_slash rootDirectories srcDirecotires)
 
     zj_paths_get_by_name_no_slash("${rootDirectories}" "src" output)
@@ -84,6 +92,10 @@ endfunction()
 
 # ######################################################################################################################
 
+# * zj_paths_add_slash: Add a trailing slash to directories
+#
+# * \arg[in] directories | Directories
+# * \arg[out] directoriesWithSlash | Directories with a trailing slash
 function(zj_paths_add_slash directories directoriesWithSlash)
 
     foreach(dir IN LISTS directories)

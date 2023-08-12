@@ -2,6 +2,13 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
+# * zj_git_get_info : Get git information
+#
+# * \arg[out] branch | Branch
+# * \arg[out] commitHash | Commit hash
+# * \arg[out] commitTime | Commit time
+# * \arg[out] tag | Hard tag
+# * \arg[out] cmakeCacheTime | CMake cache creation time (when running `cmake ..`)
 function(
     zj_git_get_info
     branch

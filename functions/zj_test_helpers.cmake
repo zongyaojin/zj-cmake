@@ -4,6 +4,11 @@ include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_variable_helpers.cmake)
 
 # ######################################################################################################################
 
+# * zj_test_setup: Setup unit tests with GoogleTest
+#
+# * \arg[in] testFilesAndFoldersRelative | A set of tests either in a single cpp file or in a folder withou its own
+#   CMakeList.txt file; if the test has to link against more than just GTest::GTest GTest::Main, they have to set up
+#   their own CMakeList.txt for finding and linking to their case-specific libraries
 function(zj_test_setup testFilesAndFoldersRelative)
 
     include(CTest)
