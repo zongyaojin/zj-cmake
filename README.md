@@ -12,4 +12,4 @@ This package provides some basic CMake tools for building and installing modular
 
 See also:
 
-- [ZJ C++ Tools](https://github.com/zongyaojin/zj-base) as an example for how to setup a modularized C++ project with this package.
+- [zj-base](https://github.com/zongyaojin/zj-base) as an example for how to create a modularized C++ project with this package.
