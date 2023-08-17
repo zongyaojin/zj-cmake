@@ -47,11 +47,13 @@ function(
         endforeach()
     endforeach()
 
+    # See https://cmake.org/cmake/help/latest/module/CMakePackageConfigHelpers.html#generating-a-package-version-file
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         "${PROJECT_NAME}-config-version.cmake" VERSION ${PACKAGE_VERSION} COMPATIBILITY AnyNewerVersion
     )
 
+    # See https://cmake.org/cmake/help/latest/command/install.html#export
     install(
         EXPORT "${PROJECT_NAME}-targets"
         FILE "${PROJECT_NAME}-targets.cmake"
@@ -59,10 +61,15 @@ function(
         DESTINATION "lib/cmake/${PROJECT_NAME}"
     )
 
+    # * See https://cmake.org/cmake/help/latest/command/configure_file.html
+    # * Assuming that the package-specific config-in file's name is [${PROJECT_NAME}-config.cmake.in] and it stored by
+    #   the package in: [${CMAKE_CURRENT_SOURCE_DIR}/cmake/in-files/${PROJECT_NAME}-config.cmake.in]
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake-in/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake" @ONLY
+        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/in-files/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
+        @ONLY
     )
 
+    # See https://cmake.org/cmake/help/latest/command/install.html#files
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
                   "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
             DESTINATION "lib/cmake/${PROJECT_NAME}"
