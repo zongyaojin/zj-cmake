@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_git_helpers.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/zj-cmake/functions/zj_git_helpers.cmake)
 
 # ######################################################################################################################
 # These definitions are only visible to targets build in this CMake project, they won't be automatically visible to

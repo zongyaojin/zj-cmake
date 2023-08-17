@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-include(${CMAKE_SOURCE_DIR}/cmake/definitions/ZJ-colors.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/zj-cmake/definitions/ZJ-colors.cmake)
 
 # ######################################################################################################################
 

@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-include(${CMAKE_SOURCE_DIR}/cmake/functions/zj_variable_helpers.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/zj-cmake/functions/zj_variable_helpers.cmake)
 
 # ######################################################################################################################
 
