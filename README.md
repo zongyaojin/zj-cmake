@@ -4,15 +4,8 @@
 
 This package provides some basic CMake tools for building and installing modularized C++ projects.
 
-It is assumed that:
-
-- this package is located in the following path in a client project `client_project_root/cmake/zj-cmake/`, for some paths and script inclusion are defined based on this assumption; and
-- the client project's `{PROJECT_NAME}-config.cmake.in` file is located in `client_project_root/cmake/in-files/{PROJECT_NAME}-config.cmake.in`, for the `installation/zj_install_helpers.cmake` will look for the config-in file by the corresponding path and name.
-
-For the usage of this package:
-
 - The **root level** `CMakeLists.txt` file template can be found in [templates/root-level-CMakeLists.txt](./templates/root-level-CMakeLists.txt.in)
-- A **library level** `CMakeLists.txt` template can be found in [templates/lib-level-CMakeLists.txt](./templates/lib-level-CMakeLists.txt.in)
+- The **library level** `CMakeLists.txt` template can be found in [templates/lib-level-CMakeLists.txt](./templates/lib-level-CMakeLists.txt.in)
 - The **install component** `xxx-config.cmake.in` template can be found in [templates/project-name-config.cmake/in](./templates/project-name-config.cmake.in)
 
 See also:

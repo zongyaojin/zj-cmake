@@ -1,5 +1,5 @@
 # ######################################################################################################################
-# Package config file [project-name-config.cmake.in] template
+# Package config file [${PROJECT_NAME}-config.cmake.in] template
 # ######################################################################################################################
 
 include(CMakeFindDependencyMacro)
