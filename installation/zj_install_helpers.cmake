@@ -12,6 +12,7 @@ function(
     headerPatterns
     exampleExecutables
     dataFolders
+    configInFilePathNoSlash
 )
 
     add_library(${PROJECT_NAME} INTERFACE)
@@ -61,13 +62,16 @@ function(
         DESTINATION "lib/cmake/${PROJECT_NAME}"
     )
 
-    # * See https://cmake.org/cmake/help/latest/command/configure_file.html
-    # * Assuming that the package-specific config-in file's name is [${PROJECT_NAME}-config.cmake.in] and it stored by
-    #   the package in: [${CMAKE_CURRENT_SOURCE_DIR}/cmake/in-files/${PROJECT_NAME}-config.cmake.in]
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/in-files/${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
-        @ONLY
-    )
+    # Define the config-in file's name, and the output file's name
+    set(configInFileName "${PROJECT_NAME}-config.cmake.in")
+    set(configOutFileName "${PROJECT_NAME}-config.cmake")
+    # Check if the file with required name exist in path, if so, do the config file generation/installation
+    if(NOT EXISTS "${configInFilePathNoSlash}/${configInFileName}")
+        message(FATAL_ERROR "Cannot find config-in file [${configInFileName}] from path [${configInFilePathNoSlash}]")
+    endif()
+
+    # See https://cmake.org/cmake/help/latest/command/configure_file.html
+    configure_file("${configInFilePathNoSlash}/${configInFileName}" "${configOutFileName}" @ONLY)
 
     # See https://cmake.org/cmake/help/latest/command/install.html#files
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
