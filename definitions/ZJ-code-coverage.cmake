@@ -1,8 +1,12 @@
 include_guard(GLOBAL)
 
+include(${CMAKE_SOURCE_DIR}/cmake/zj-cmake/definitions/ZJ-colors.cmake)
+
 # ######################################################################################################################
 
 if(CMAKE_COMPILER_IS_GNUCXX AND ZJ_CODE_COVERAGE)
+    message(${zjBoldCyan} "-- Using ZJ_CODE_COVERAGE" ${zjColorReset})
+
     # * https://discourse.cmake.org/t/guideline-for-code-coverage/167
     add_compile_options(-fprofile-arcs -ftest-coverage)
 
