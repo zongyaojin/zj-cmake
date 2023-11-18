@@ -8,6 +8,9 @@ package_path=$(realpath $script_absolute_path/../..)
 sudo apt update -y
 sudo apt upgrade -y
 
+# Install git
+sudo apt install -y git
+
 # Install pip
 sudo apt install -y python3-pip
 
