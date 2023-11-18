@@ -2,9 +2,17 @@ include_guard(GLOBAL)
 
 # ######################################################################################################################
 
-# * zj_combine_install_library : Combine all targets into one library and install it
-
-# * \arg:sourceDirectoriesNoSlash
+# * zj_combine_install_library : Combine all targets into one library and install it, and meta data
+# 
+# * \arg[in] libTargets | Library targets
+# * \arg[in] relIncDirsSlash | Relative include directories with slash
+# * \arg[in] headerPatterns | Header patterns for picking up header files
+# * \arg[in] exampleExecutables | Example executables(targets)
+# * \arg[in] dataFolders | Data folders to copy
+# * \arg[in] configInFilePathNoSlash | The config.in file for finding a package
+#
+# * \note:  Suppress the the too many arguments (>5) error for the file
+# cmake-lint: disable=R0913
 function(
     zj_combine_install_library
     libTargets
