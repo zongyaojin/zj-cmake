@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
-name: C/C++ CI
+name: Pre-Commit
 
 on:
   push:
@@ -13,9 +13,11 @@ jobs:
 
     steps:
       # Github checkout action | https://github.com/actions/checkout
-      # This repository doesn't need recursive checkout with private submodules
+      # This repository doesn't have recursive private submodules
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup and run pre-commit
         run: bash ./scripts/zj-pre-commit.bash

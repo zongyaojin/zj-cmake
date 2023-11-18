@@ -8,7 +8,7 @@ package_path=$(realpath $script_absolute_path/../..)
 sudo apt update -y
 sudo apt upgrade -y
 
-# Install git
+# Install dependencies
 sudo apt install -y git
 
 # Install pip
