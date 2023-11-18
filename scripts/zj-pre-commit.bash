@@ -3,7 +3,7 @@ set -exo pipefail
 
 script_file=$(realpath "$0")
 script_absolute_path=$(dirname "$script_file")
-package_path=$(realpath $script_absolute_path/../..)
+package_path=$(realpath $script_absolute_path/..)
 
 sudo apt update -y
 sudo apt upgrade -y
