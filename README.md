@@ -1,5 +1,6 @@
 # ZJ CMake
 
+[![Build status](https://github.com/zongyaojin/zj-base/actions/workflows/cmake-format-lint.yml/badge.svg)](https://github.com/zongyaojin/zj-cmake/actions/workflows/cmake-format-lint.yml)
 [![GitHub license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/zongyaojin/zj-cmake/blob/main/LICENSE)
 
 This package provides some basic CMake tools for building and installing modularized C++ projects.
