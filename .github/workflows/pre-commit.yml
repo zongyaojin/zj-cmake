@@ -13,13 +13,9 @@ jobs:
 
     steps:
       # Github checkout action | https://github.com/actions/checkout
-      # Private repo checkout | https://github.com/actions/checkout/issues/116#issuecomment-644419389
-      # Generate a PAT (personal access token) for your account, then add the PAT to repositories
-      #   that need it (as a `secret`) to access other private repositories in your account for GitHub Action
-      - name: Checkout repository with submodules
+      # This repository doesn't need recursive checkout with private submodules
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Setup and run pre-commit
         run: bash ./scripts/zj-pre-commit.bash
