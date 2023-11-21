@@ -17,6 +17,13 @@ $client_project/
 
 For details:
 
-- See [templates/root-level-CMakeLists.txt](./templates/root-level-CMakeLists.txt.in) for the **root level** `CMakeLists.txt` template.
-- See [templates/lib-level-CMakeLists.txt](./templates/lib-level-CMakeLists.txt.in) for the **library level** `CMakeLists.txt` template.
-- See [templates/project-name-config.cmake/in](./templates/project-name-config.cmake.in) for the **install component** `${PACKAGE_NAME}-config.cmake.in` template.
+- see [templates/root-level-CMakeLists.txt](./templates/root-level-CMakeLists.txt.in) for the **root level** `CMakeLists.txt` template;
+- see [templates/lib-level-CMakeLists.txt](./templates/lib-level-CMakeLists.txt.in) for the **library level** `CMakeLists.txt` template;
+- see [templates/project-name-config.cmake/in](./templates/project-name-config.cmake.in) for the **install component** `${PACKAGE_NAME}-config.cmake.in` template.
+
+Style guide:
+
+- for variables, use `fooBarStyle`;
+- for functions, use `foo_bar_style`;
+- for compile definitions to the client C++ project, use `__ZJ_PKG_FOO_BAR__`;
+- for CMake input arguments, use `ZJ_FOO_BAR`.
