@@ -23,7 +23,7 @@ For details:
 
 Style guide:
 
-- for variables, use `fooBarStyle`;
-- for functions, use `foo_bar_style`;
+- for variables, use `fooBar`;
+- for functions, use `foo_bar`;
 - for compile definitions to the client C++ project, use `__ZJ_PKG_FOO_BAR__`;
 - for CMake input arguments, use `ZJ_FOO_BAR`.
